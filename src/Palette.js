@@ -1,42 +1,43 @@
 import React, { Component } from 'react'
 import ColorBox from './ColorBox'
+import Navbar from "./Navbar"
 
 // the loading of css files matters. in this case since palette is defined after index.css, the palette styles will override the index.css
-import "rc-slider/assets/index.css"
 import "./Palette.css"
-import Slider from 'rc-slider'
 
 
 export class Palette extends Component {
     constructor(props){
         super(props)
         this.state = {
-            level: 500
+            level: 500,
+            format: 'hex'
         }
         this.changeLevel = this.changeLevel.bind(this)
+        this.changeFormat = this.changeFormat.bind(this)
     }
 
     changeLevel(level) {
         this.setState({level: level})
     }
 
+    changeFormat(value){
+        this.setState({format: value})
+    }
+
     render() {
         const {colors} = this.props.palette
-        const {level} = this.state
+        const {level, format} = this.state
         let colorBoxes = colors[level].map(color => (
-            <ColorBox background={color.hex} name={color.name} />
+            <ColorBox background={color[format]} name={color.name} />
         ))
         return (
             <div className="Palette">
-                <div className='slider'>
-                    <Slider 
-                        defaultValue={level} 
-                        min={100} 
-                        max={900} 
-                        step={100}
-                        onAfterChange={this.changeLevel}
-                    />
-                </div>
+                <Navbar 
+                    evel={level} 
+                    changeLevel={this.changeLevel} 
+                    handleChange={this.changeFormat}
+                />
                 <div className="Palette-colors">
                     {colorBoxes}
                 </div>
