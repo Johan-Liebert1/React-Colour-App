@@ -4,7 +4,7 @@ import "./Palette.css"
 
 export class Palette extends Component {
     render() {
-        let colorBoxes = this.props.colors.map(color => (
+        let colorBoxes = this.props.palette.colors[300].map(color => (
             <ColorBox background={color.color} name={color.name} />
         ))
         return (
