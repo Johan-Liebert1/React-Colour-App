@@ -1,5 +1,10 @@
+*{
+    box-sizing: border-box;
+}
 .Palette {
     height: 100vh;
+    /* overflow: hidden; */
+    box-sizing: border-box;
 }
 
 .Palette-colors {
@@ -12,3 +17,10 @@
     display: inline-block;
 }
 
+
+.Palette-footer {
+    height: 3.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

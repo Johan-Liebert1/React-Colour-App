@@ -2,7 +2,7 @@ export default [
     {
       paletteName: "Material UI Colors",
       id: "material-ui-colors",
-      emoji: "🎨",
+      emoji: '🎨',
       colors: [
         { name: "red", color: "#F44336" },
         { name: "pink", color: "#E91E63" },
