@@ -31,13 +31,14 @@ export class Navbar extends Component {
     }
 
     render() {
-        const {level, changeLevel} = this.props
+        const {level, changeLevel, showSlider} = this.props
         const {format} = this.state
         return (
             <header className="Navbar">
                 <div className="logo">
                     <Link to="/">reactcolorpicker</Link>
                 </div>
+                {showSlider && (
                 <div className="slider-container">
                     <span>Level: {level}</span>
                     <div className='slider'>
@@ -50,6 +51,7 @@ export class Navbar extends Component {
                         />
                     </div>
                 </div>
+                )}
                 <div className="select-container">
                     <Select value={format} onChange={this.handleFormatChange}>
                         <MenuItem value="hex">HEX - #ffffff</MenuItem>
