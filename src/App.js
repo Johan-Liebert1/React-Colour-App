@@ -1,9 +1,14 @@
 import React from 'react';
+import { Route, Switch } from "react-router-dom";
+
+//COMPONENTS
 import Palette from "./Palette"
 import PaletteList from "./PaletteList"
+
+//HELPERS
 import seedColors from "./seedColor"
 import {generatePalette} from "./colorHelpers"
-import { Route, Switch } from "react-router-dom";
+
 
 function findPalette(id) {
     return seedColors.find(palette => palette.id === id)
