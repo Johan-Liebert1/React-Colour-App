@@ -1,26 +1,6 @@
-*{
-    box-sizing: border-box;
-}
-.Palette {
-    height: 100vh;
-    /* overflow: hidden; */
-    box-sizing: border-box;
-}
-
-.Palette-colors {
-    height: 90%;
-}
-
 .slider {
     width: 250px;
     margin: 0 10px;
     display: inline-block;
 }
 
-
-.Palette-footer {
-    height: 3.5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

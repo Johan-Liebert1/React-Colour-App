@@ -1,71 +1,8 @@
 import React, { Component } from 'react'
-import "./ColorBox.css"
+import styles from "./Styles/ColorBoxStyles"
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import {Link} from 'react-router-dom'
-import chroma from "chroma-js"
 import {withStyles} from "@material-ui/styles"
-
-
-const styles = {
-    ColorBox: {
-        height: props => 
-            props.showingFullPalette ? '25%' : '50%',
-        width: '20%',
-
-        margin: '0 auto',
-        display: 'inline-block',
-        position: 'relative',
-        cursor: 'pointer',
-        marginBottom: '-4px',
-        "&:hover button": {
-            opacity: '1'
-        }
-    },
-    copyText:{
-        color: props => 
-            chroma(props.background).luminance() >= 0.40 ? 'black': 'white'
-    },
-    colorName: {
-        color: props => 
-            chroma(props.background).luminance() <= 0.19 ? 'white' : 'black'
-    },
-    seeMore: {
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-        position: 'absolute',
-        border: 'none',
-        right: '0',
-        bottom: '0',
-        color: props => 
-            chroma(props.background).luminance() <= 0.19 ? 'white' : 'black',
-        width: '60px',
-        height: '30px',
-        textAlign: 'center',
-        lineHeight: '30px',
-        textTransform: 'uppercase'
-    },
-    copyButton: {
-        color: props => 
-            chroma(props.background).luminance() <= 0.7 ? 'white' : 'black',
-        width: '100px',
-        height: '30px',
-        position: 'absolute',
-        display: 'inline-block',
-        top: '50%',
-        right: '50%',
-        marginRight: '-50px',
-        marginTop: '-15px',
-        textAlign: 'center',
-        outline: 'none',
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-        lineHeight: '30px',
-        textTransform: 'uppercase',
-        fontSize: '1rem',
-        border: 'none',
-        cursor: 'pointer',
-        textDecoration: 'none',
-        opacity: '0'
-    }
-}
 
 
 export class ColorBox extends Component {
@@ -94,14 +31,14 @@ export class ColorBox extends Component {
                 <div style={{backgroundColor:background}} className={classes.ColorBox}>
                     <div 
                         style={{backgroundColor:background}} 
-                        className={`copy-overlay ${copied && 'show'}`} 
+                        className={`${classes.copyOverlay} ${copied && classes.showOverlay}`} 
                     />
-                    <div className={`copied-message ${copied && 'show'}`}>
+                    <div className={`${classes.copiedMessage} ${copied && classes.showCopiedMessage}`}>
                         <h1>COPIED</h1>
                         <p className={classes.copyText}>{background}</p>
                     </div>
-                    <div className="copy-container">
-                        <div className="box-content">
+                    <div>
+                        <div className={classes.boxContent}>
                             <span className={classes.colorName}>{name}</span>
                         </div>
                         <button className={classes.copyButton}>Copy</button>

@@ -4,6 +4,8 @@ import Navbar from "./Navbar"
 // the loading of css files matters. in this case since palette is defined after index.css, the palette styles will override the index.css
 import "./Palette.css"
 import PaletteFooter from './PaletteFooter'
+import {withStyles} from "@material-ui/styles"
+import styles from "./Styles/PaletteStyles"
 
 export class Palette extends Component {
     constructor(props){
@@ -26,6 +28,7 @@ export class Palette extends Component {
 
     render() {
         const {colors, paletteName, id} = this.props.palette
+        const {classes} = this.props
         const {level, format} = this.state
         let colorBoxes = colors[level].map(color => (
             <ColorBox 
@@ -37,14 +40,14 @@ export class Palette extends Component {
             />
         ))
         return (
-            <div className="Palette">
+            <div className={classes.Palette}>
                 <Navbar 
                     evel={level} 
                     changeLevel={this.changeLevel} 
                     handleChange={this.changeFormat}
                     showSlider
                 />
-                <div className="Palette-colors">
+                <div className={classes.PaletteColors}>
                     {colorBoxes}
                 </div>
                 <PaletteFooter paletteName={paletteName}/>
@@ -53,4 +56,4 @@ export class Palette extends Component {
     }
 }
 
-export default Palette
+export default withStyles(styles)(Palette)

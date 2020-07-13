@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
+import {withStyles} from '@material-ui/styles'
+import styles from "./Styles/PaletteFooterStyles"
 
 export class PaletteFooter extends Component {
     render() {
-        const {paletteName} = this.props
+        const {paletteName, classes} = this.props
         return (
-            <footer className="Palette-footer">
+            <footer className={classes.PaletteFooter}>
                 {paletteName}
             </footer>
         )
     }
 }
 
-export default PaletteFooter
+export default withStyles(styles)(PaletteFooter)
