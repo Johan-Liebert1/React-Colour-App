@@ -24,6 +24,10 @@ export default {
     selectContainer : {
         marginLeft: 'auto',
         marginRight: '1rem',
+    },
+
+    Slider : {
+        width : '250px'
     }
 
 }

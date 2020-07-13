@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ColorBox from './ColorBox'
 import Navbar from "./Navbar"
 // the loading of css files matters. in this case since palette is defined after index.css, the palette styles will override the index.css
-import "./Palette.css"
 import PaletteFooter from './PaletteFooter'
 import {withStyles} from "@material-ui/styles"
 import styles from "./Styles/PaletteStyles"

@@ -45,7 +45,7 @@ export class Navbar extends Component {
                 {showSlider && (
                 <div>
                     <span>Level: {level}</span>
-                    <div className='slider'>
+                    <div className={classes.Slider}>
                         <Slider 
                             defaultValue={level} 
                             min={100} 
