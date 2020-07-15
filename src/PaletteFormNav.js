@@ -84,7 +84,7 @@ export class PaletteFormNav extends Component {
                     onClick={this.props.handleDrawerOpen}
                     className={classNames(classes.menuButton, open && classes.hide)}
                     >
-                    <MenuIcon />
+                        <MenuIcon />
                     </IconButton>
                     <Typography variant='h6' color='inherit' noWrap>
                         Create A Palette
@@ -106,7 +106,7 @@ export class PaletteFormNav extends Component {
                             color="primary" 
                             type='submit'
                         >
-                                Save Palette
+                            Save Palette
                         </Button>
                         
                     </ValidatorForm>
