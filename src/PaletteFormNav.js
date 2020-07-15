@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button"
-import {ValidatorForm, TextValidator} from "react-material-ui-form-validator"
+import PaletteMetaForm from './PaletteMetaForm';
 
 const drawerWidth = 400;
 const styles = theme => ({
@@ -25,6 +25,7 @@ const styles = theme => ({
     }),
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     height: "64px"
   },
   appBarShift: {
@@ -39,33 +40,43 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20
   },
-  navBtns: {}
+  navBtns: {
+      marginRight: '1rem',
+      "& a": {
+        textDecoration: 'none'
+        }
+
+  },
+  button: {
+        margin: '0 0.5rem',
+ 
+  },
+
 });
 
 export class PaletteFormNav extends Component {
     constructor(props){
         super(props)
         this.state = {
-            newPaletteName: ""
+            formShowing: false
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.showForm = this.showForm.bind(this)
+        this.hideForm = this.hideForm.bind(this)
     }
 
-    componentDidMount() {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', value => 
-        this.props.palettes.every(
-            ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase()
-        )
-    )
+
+    showForm() {
+        this.setState({formShowing: true})
     }
 
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value})
+    hideForm() {
+        this.setState({formShowing: false})
+
     }
 
     render() {
-        const {classes, open} = this.props
-        const {newPaletteName} = this.state
+        const {classes, open, palettes, handleSubmit} = this.props
+        const {formShowing} = this.state
 
         return (
             <div className={classes.root}>
@@ -92,29 +103,19 @@ export class PaletteFormNav extends Component {
                 </Toolbar>
 
                 <div className={classes.navBtns}>
-                    <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
-                        <TextValidator 
-                            value={this.state.newPaletteName} 
-                            label="Palette Name"
-                            onChange={this.handleChange} 
-                            name="newPaletteName"  
-                            validators={['required', 'isPaletteNameUnique']}
-                            errorMessages={['This field is required', 'Palette Name already Used']} 
-                        />
-                        <Button 
-                            variant="contained" 
-                            color="primary" 
-                            type='submit'
-                        >
-                            Save Palette
-                        </Button>
-                        
-                    </ValidatorForm>
+                    
+
                     <Link to="/">
-                        <Button variant='contained' color="secondary">Go Back</Button>
+                        <Button variant='contained' color="secondary" className={classes.button}>Go Back</Button>
                     </Link>
+                    <Button variant="contained" color="primary" onClick={this.showForm} className={classes.button}>
+                        Save Palette
+                    </Button>
                 </div>
                 </AppBar>
+
+                {formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} hideForm={this.hideForm}/>}
+
             </div>
         )
     }
