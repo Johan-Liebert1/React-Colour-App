@@ -37,7 +37,9 @@ const styles = theme => ({
         margin: '0 0.5rem',
  
   },
-
+  hide: {
+      display: 'none'
+  }
 });
 
 export default styles
