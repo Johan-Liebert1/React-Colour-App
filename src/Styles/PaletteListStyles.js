@@ -1,4 +1,14 @@
 export default {
+    "@global" : {
+        // the .fade-exit part is redundant as the palette already starts at opacity 1
+        '.fade-exit': {
+            opacity: 1
+        },
+        '.fade-exit-active': {
+            opacity: 0,
+            transition: 'opacity 500ms ease-out'
+        }
+    },
     root: {
         backgroundColor: 'rgb(40,40,40)',
         height: '100vh',
